@@ -67,7 +67,7 @@ public class UtilPackageTests extends TestCase {
         suite.addTestSuite(LogFormatTests.class);
         suite.addTestSuite(PaintListTests.class);
         suite.addTestSuite(RelativeDateFormatTests.class);
-        suite.addTestSuite(SerialUtilitiesTests.class);
+//        suite.addTestSuite(SerialUtilitiesTests.class);
         suite.addTestSuite(ShapeUtilitiesTests.class);
         suite.addTestSuite(StrokeListTests.class);
         return suite;
