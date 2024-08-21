@@ -187,24 +187,22 @@ public class PaintListTests extends TestCase {
     /**
      * Some checks for the testHashCode() method.
      */
-    public void testHashCode() {}
-// Defects4J: flaky method
-//     public void testHashCode() {
-//         PaintList p1 = new PaintList();
-//         PaintList p2 = new PaintList();
-//         assertTrue(p1.hashCode() == p2.hashCode());
-//         
-//         p1.setPaint(0, Color.red);
-//         assertFalse(p1.hashCode() == p2.hashCode());
-//         p2.setPaint(0, Color.red);
-//         assertTrue(p1.hashCode() == p2.hashCode());
-//         
-//         p1.setPaint(1, new GradientPaint(1.0f, 2.0f, Color.RED, 3.0f, 4.0f, 
-//                 Color.GREEN));
-//         assertFalse(p1.hashCode() == p2.hashCode());
-//         p2.setPaint(1, new GradientPaint(1.0f, 2.0f, Color.RED, 3.0f, 4.0f, 
-//                 Color.GREEN));
-//         assertTrue(p1.hashCode() == p2.hashCode());
-//     }
+    public void testHashCode() {
+        PaintList p1 = new PaintList();
+        PaintList p2 = new PaintList();
+        assertTrue(p1.hashCode() == p2.hashCode());
+        
+        p1.setPaint(0, Color.red);
+        assertFalse(p1.hashCode() == p2.hashCode());
+        p2.setPaint(0, Color.red);
+        assertTrue(p1.hashCode() == p2.hashCode());
+        
+        p1.setPaint(1, new GradientPaint(1.0f, 2.0f, Color.RED, 3.0f, 4.0f, 
+                Color.GREEN));
+        assertFalse(p1.hashCode() == p2.hashCode());
+        p2.setPaint(1, new GradientPaint(1.0f, 2.0f, Color.RED, 3.0f, 4.0f, 
+                Color.GREEN));
+        assertTrue(p1.hashCode() == p2.hashCode());
+    }
 
 }

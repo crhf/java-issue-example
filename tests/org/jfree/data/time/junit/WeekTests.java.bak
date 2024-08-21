@@ -287,28 +287,24 @@ public class WeekTests extends TestCase {
     /**
      * A test case for bug 1448828.
      */
-    public void testBug1448828() {}
-// Defects4J: flaky method
-//     public void testBug1448828() {
-//         Week w = new Week(new Date(1136109830000l), 
-//                 TimeZone.getTimeZone("GMT"));
-//         assertEquals(2005, w.getYearValue());
-//         assertEquals(52, w.getWeek());
-//     }
+    public void testBug1448828() {
+        Week w = new Week(new Date(1136109830000l), 
+                TimeZone.getTimeZone("GMT"));
+        assertEquals(2005, w.getYearValue());
+        assertEquals(52, w.getWeek());
+    }
     
     /**
      * A test case for bug 1498805.
      */
-    public void testBug1498805() {}
-// Defects4J: flaky method
-//     public void testBug1498805() {
-//         TimeZone zone = TimeZone.getTimeZone("GMT");
-//         GregorianCalendar gc = new GregorianCalendar(zone);
-//         gc.set(2005, Calendar.JANUARY, 1, 12, 0, 0);
-//         Week w = new Week(gc.getTime(), zone);
-//         assertEquals(53, w.getWeek());
-//         assertEquals(new Year(2004), w.getYear());
-//     }
+    public void testBug1498805() {
+        TimeZone zone = TimeZone.getTimeZone("GMT");
+        GregorianCalendar gc = new GregorianCalendar(zone);
+        gc.set(2005, Calendar.JANUARY, 1, 12, 0, 0);
+        Week w = new Week(gc.getTime(), zone);
+        assertEquals(53, w.getWeek());
+        assertEquals(new Year(2004), w.getYear());
+    }
     
     /**
      * Some checks for the getFirstMillisecond() method.
@@ -327,24 +323,22 @@ public class WeekTests extends TestCase {
     /**
      * Some checks for the getFirstMillisecond(TimeZone) method.
      */
-    public void testGetFirstMillisecondWithTimeZone() {}
-// Defects4J: flaky method
-//     public void testGetFirstMillisecondWithTimeZone() {
-//         Week w = new Week(47, 1950);
-//         TimeZone zone = TimeZone.getTimeZone("America/Los_Angeles");
-//         Calendar c = new GregorianCalendar(zone);
-//         assertEquals(-603216000000L, w.getFirstMillisecond(c));
-//         
-//         // try null calendar
-//         boolean pass = false;
-//         try {
-//             w.getFirstMillisecond((Calendar) null);
-//         }
-//         catch (NullPointerException e) {
-//             pass = true;
-//         }
-//         assertTrue(pass);            
-//     }
+    public void testGetFirstMillisecondWithTimeZone() {
+        Week w = new Week(47, 1950);
+        TimeZone zone = TimeZone.getTimeZone("America/Los_Angeles");
+        Calendar c = new GregorianCalendar(zone);
+        assertEquals(-603216000000L, w.getFirstMillisecond(c));
+        
+        // try null calendar
+        boolean pass = false;
+        try {
+            w.getFirstMillisecond((Calendar) null);
+        }
+        catch (NullPointerException e) {
+            pass = true;
+        }
+        assertTrue(pass);            
+    }
     
     /**
      * Some checks for the getFirstMillisecond(TimeZone) method.
@@ -383,24 +377,22 @@ public class WeekTests extends TestCase {
     /**
      * Some checks for the getLastMillisecond(TimeZone) method.
      */
-    public void testGetLastMillisecondWithTimeZone() {}
-// Defects4J: flaky method
-//     public void testGetLastMillisecondWithTimeZone() {
-//         Week w = new Week(2, 1950);
-//         TimeZone zone = TimeZone.getTimeZone("America/Los_Angeles");
-//         Calendar c = new GregorianCalendar(zone);
-//         assertEquals(-629827200001L, w.getLastMillisecond(c));
-//         
-//         // try null calendar
-//         boolean pass = false;
-//         try {
-//             w.getLastMillisecond((Calendar) null);
-//         }
-//         catch (NullPointerException e) {
-//             pass = true;
-//         }
-//         assertTrue(pass);            
-//     }
+    public void testGetLastMillisecondWithTimeZone() {
+        Week w = new Week(2, 1950);
+        TimeZone zone = TimeZone.getTimeZone("America/Los_Angeles");
+        Calendar c = new GregorianCalendar(zone);
+        assertEquals(-629827200001L, w.getLastMillisecond(c));
+        
+        // try null calendar
+        boolean pass = false;
+        try {
+            w.getLastMillisecond((Calendar) null);
+        }
+        catch (NullPointerException e) {
+            pass = true;
+        }
+        assertTrue(pass);            
+    }
     
     /**
      * Some checks for the getLastMillisecond(TimeZone) method.
@@ -475,41 +467,39 @@ public class WeekTests extends TestCase {
     /**
      * A test for a problem in constructing a new Week instance.
      */
-    public void testConstructor() {}
-// Defects4J: flaky method
-//     public void testConstructor() {
-//         Locale savedLocale = Locale.getDefault();
-//         TimeZone savedZone = TimeZone.getDefault();
-//         Locale.setDefault(new Locale("da", "DK"));
-//         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Copenhagen"));
-//         GregorianCalendar cal = (GregorianCalendar) Calendar.getInstance(
-//                 TimeZone.getDefault(), Locale.getDefault());
-//         
-//         // first day of week is monday
-//         assertEquals(Calendar.MONDAY, cal.getFirstDayOfWeek());
-//         cal.set(2007, Calendar.AUGUST, 26, 1, 0, 0);
-//         cal.set(Calendar.MILLISECOND, 0);
-//         Date t = cal.getTime();
-//         Week w = new Week(t, TimeZone.getTimeZone("Europe/Copenhagen"));
-//         assertEquals(34, w.getWeek());
-// 
-//         Locale.setDefault(Locale.US);
-//         TimeZone.setDefault(TimeZone.getTimeZone("US/Detroit"));
-//         cal = (GregorianCalendar) Calendar.getInstance(TimeZone.getDefault());
-//         // first day of week is Sunday
-//         assertEquals(Calendar.SUNDAY, cal.getFirstDayOfWeek());
-//         cal.set(2007, Calendar.AUGUST, 26, 1, 0, 0);
-//         cal.set(Calendar.MILLISECOND, 0);
-//         
-//         t = cal.getTime();
-//         w = new Week(t, TimeZone.getTimeZone("Europe/Copenhagen"));
-//         assertEquals(35, w.getWeek());
-//         w = new Week(t, TimeZone.getTimeZone("Europe/Copenhagen"), 
-//                 new Locale("da", "DK"));
-//         assertEquals(34, w.getWeek());
-// 
-//         Locale.setDefault(savedLocale);
-//         TimeZone.setDefault(savedZone);
-//     }
+    public void testConstructor() {
+        Locale savedLocale = Locale.getDefault();
+        TimeZone savedZone = TimeZone.getDefault();
+        Locale.setDefault(new Locale("da", "DK"));
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Copenhagen"));
+        GregorianCalendar cal = (GregorianCalendar) Calendar.getInstance(
+                TimeZone.getDefault(), Locale.getDefault());
+        
+        // first day of week is monday
+        assertEquals(Calendar.MONDAY, cal.getFirstDayOfWeek());
+        cal.set(2007, Calendar.AUGUST, 26, 1, 0, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        Date t = cal.getTime();
+        Week w = new Week(t, TimeZone.getTimeZone("Europe/Copenhagen"));
+        assertEquals(34, w.getWeek());
+
+        Locale.setDefault(Locale.US);
+        TimeZone.setDefault(TimeZone.getTimeZone("US/Detroit"));
+        cal = (GregorianCalendar) Calendar.getInstance(TimeZone.getDefault());
+        // first day of week is Sunday
+        assertEquals(Calendar.SUNDAY, cal.getFirstDayOfWeek());
+        cal.set(2007, Calendar.AUGUST, 26, 1, 0, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        
+        t = cal.getTime();
+        w = new Week(t, TimeZone.getTimeZone("Europe/Copenhagen"));
+        assertEquals(35, w.getWeek());
+        w = new Week(t, TimeZone.getTimeZone("Europe/Copenhagen"), 
+                new Locale("da", "DK"));
+        assertEquals(34, w.getWeek());
+
+        Locale.setDefault(savedLocale);
+        TimeZone.setDefault(savedZone);
+    }
     
 }
